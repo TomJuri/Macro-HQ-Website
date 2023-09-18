@@ -12,6 +12,7 @@
     <link href="./css/style.css" rel="stylesheet">
     <link href="/dist/css/style.css" rel="stylesheet">
     <title>MacroHQ</title>
+    <link rel="icon" type="image/x-icon" href="./assets/logo.gif">
     <script src="./js/particles.min.js"></script>
     <script src="./js/app.js"></script>
 </head>
@@ -19,22 +20,23 @@
 <div class="absolute -z-10 bg-black h-screen w-screen" id="particles-js"></div>
 <div class="bg-neutral-900 flex justify-between">
     <!-- Logo on the left -->
-    <div class="space-x-1 flex items-center">
-        <img class="p-1 rounded-3xl" src="./assets/logo.gif" alt="Logo" width="65px" height="65px"/>
-        <p class="sm:text-2xl">MacroHQ</p>
+    <div class="space-x-1 flex items-center p-1">
+        <img class="rounded-3xl" src="./assets/logo.gif" alt="Logo" width="65px" height="65px"/>
+        <p class="text-2xl pl-1 md:text-3xl">MacroHQ</p>
     </div>
-    <!-- Buttons on the right -->
-    <div class="space-x-1 flex items-center">
+    <!-- Button on the right -->
+    <div class="space-x-1 flex items-center pr-1">
         <img class="invert" src="./assets/account.svg" alt="Account" width="48" height="48">
     </div>
 </div>
-<div class="absolute top-1/4 left-1/2 text-center transform -translate-x-1/2 -translate-y-1/2">
+<!-- Main part -->
+<div class="absolute top-1/4 md:top-1/2 left-1/2 text-center transform -translate-x-1/2 -translate-y-1/2">
     <p class="text-7xl">MacroHQ</p>
     <p class="text-2xl">We make macros.</p>
-
-        <button class="border-white text-xl border-2 rounded-xl pl-2 pr-2">MacroHub</button>
-        <button class="border-white text-xl border-2 rounded-xl pl-2 pr-2">MacroHub</button>
-
+    <div class="pt-2">
+        <button class="border-white text-xl border-2 rounded-xl hover:bg-white hover:text-black pl-2 pr-2">MacroHub</button>
+        <button class="border-white text-xl border-2 rounded-xl hover:bg-white hover:text-black pl-2 pr-2">Discord</button>
+    </div>
 </div>
 </body>
 </html>
