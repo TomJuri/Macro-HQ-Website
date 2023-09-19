@@ -3,22 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link href="./css/style.css" rel="stylesheet">
-    <link href="/dist/css/style.css" rel="stylesheet">
-    <title>Forgot password</title>
-    <link href="./assets/logo_transparent.png" rel="icon" type="image/x-icon">
+    <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet">
+    <title>Sign in</title>
+    <link href="{{ url_for('static',filename='assets/logo_transparent.png') }}" rel="icon" type="image/x-icon">
 </head>
 <body>
 <div class="bg-neutral-900">
     <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <a class="flex items-center mb-6 text-2xl font-semibold text-white" href="#">
-            <img alt="logo" class="w-14 h-14 mr-2" src="./assets/logo_transparent.png">
+            <img alt="logo" class="w-14 h-14 mr-2" src="{{ url_for('static',filename='assets/logo_transparent.png') }}">
             MacroHQ
         </a>
         <div class="w-full rounded-lg shadow border md:mt-0 sm:max-w-md xl:p-0 bg-neutral-800 border-neutral-700">
             <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                 <h1 class="text-xl font-bold leading-tight tracking-tight md:text-2xl text-white">
-                    Forgot password
+                    Sign in to your account
                 </h1>
                 <form action="#" class="space-y-4 md:space-y-6">
                     <div>
@@ -29,10 +28,25 @@
                                placeholder="name@company.com"
                                required="" type="email">
                     </div>
+                    <div>
+                        <label class="block mb-2 text-sm font-medium text-white" for="password">Password</label>
+                        <input class="border sm:text-sm rounded-lg block w-full p-2.5 bg-neutral-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+                               id="password" name="password" placeholder="••••••••"
+                               required=""
+                               type="password">
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <a class="text-sm font-medium hover:underline text-yellow-500" href="./forgotpassword.html">Forgot
+                            password?</a>
+                    </div>
                     <button class="w-full text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-yellow-600 hover:bg-yellow-700 focus:ring-yellow-800"
                             type="submit">
-                        Send
+                        Sign in
                     </button>
+                    <p class="text-sm font-light text-gray-400">
+                        Don’t have an account yet?
+                        <a class="font-medium hover:underline text-yellow-500" href="./signup.html">Sign up</a>
+                    </p>
                 </form>
             </div>
         </div>

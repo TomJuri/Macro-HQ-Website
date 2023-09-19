@@ -9,24 +9,23 @@
     <meta content="https://macro-hq.github.io/Website/assets/banner.png" property="og:image">
     <meta name="twitter:card" content="summary_large_image">
     <meta content="#f8cc1e" data-react-helmet="true" name="theme-color">
-    <link href="./css/style.css" rel="stylesheet">
-    <link href="/dist/css/style.css" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet">
     <title>MacroHQ</title>
-    <link rel="icon" type="image/x-icon" href="./assets/logo_transparent.png">
-    <script src="./js/particles.min.js"></script>
-    <script src="./js/app.js"></script>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static',filename='assets/logo_transparent.png') }}">
+    <script src="{{ url_for('static',filename='js/particles.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/app.js') }}"></script>
 </head>
 <body>
 <div class="absolute -z-10 bg-black h-screen w-screen" id="particles-js"></div>
 <div class="bg-neutral-900 flex justify-between">
     <!-- Logo on the left -->
     <div class="space-x-1 flex items-center p-1">
-        <img class="rounded-3xl" src="./assets/logo_transparent.png" alt="Logo" width="65px" height="65px"/>
+        <img class="rounded-3xl" src="{{ url_for('static',filename='assets/logo_transparent.png') }}" alt="Logo" width="65px" height="65px"/>
         <p class="pl-1 md:text-3xl">MacroHQ</p>
     </div>
     <!-- Button on the right -->
     <div class="space-x-1 flex items-center pr-1">
-        <img class="invert" src="./assets/account.svg" alt="Account" width="48" height="48">
+        <img class="invert" src="{{ url_for('static',filename='assets/account.svg') }}" alt="Account" width="48" height="48">
     </div>
 </div>
 <!-- Main part -->

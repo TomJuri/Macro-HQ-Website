@@ -1,0 +1,14 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "tailwind": "npx tailwindcss -i static/css/input.css -o templates/css/style.css --watch"
+  },
+  "author": "",
+  "license": "",
+  "devDependencies": {
+    "tailwindcss": "^3.3.3"
+  }
+}

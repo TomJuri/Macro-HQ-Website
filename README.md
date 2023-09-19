@@ -1,2 +1,0 @@
-# Website
-Official MacroHQ website.
