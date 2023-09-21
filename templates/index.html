@@ -24,8 +24,8 @@
         <p class="pl-1 md:text-3xl">MacroHQ</p>
     </div>
     <!-- Button on the right -->
-    <div class="space-x-1 flex items-center pr-1">
-        <img class="invert" src="{{ url_for('static',filename='assets/account.svg') }}" alt="Account" width="48" height="48">
+    <div class="space-x-1 flex items-center pr-2">
+        <img onclick="location.href = '/account';" class="invert" src="{{ url_for('static',filename='assets/account.svg') }}" alt="Account" width="48" height="48">
     </div>
 </div>
 <!-- Main part -->
@@ -34,7 +34,7 @@
     <p class="text-2xl">We make macros.</p>
     <div class="pt-2">
         <button class="border-white text-xl border-2 rounded-xl hover:bg-white hover:text-black pl-2 pr-2">MacroHub</button>
-        <button class="border-white text-xl border-2 rounded-xl hover:bg-white hover:text-black pl-2 pr-2">Discord</button>
+        <button onclick="location.href = 'https://discord.gg/vBP8R6JK8Z';" class="border-white text-xl border-2 rounded-xl hover:bg-white hover:text-black pl-2 pr-2">Discord</button>
     </div>
 </div>
 </body>
