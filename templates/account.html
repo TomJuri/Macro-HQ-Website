@@ -12,22 +12,51 @@
 <div class="bg-neutral-900 flex justify-between">
     <!-- Logo on the left -->
     <div class="space-x-1 flex items-center p-1">
-        <img class="rounded-3xl" src="{{ url_for('static',filename='assets/logo_transparent.png') }}" alt="Logo" width="65px" height="65px"/>
+        <img class="rounded-3xl" src="{{ url_for('static',filename='assets/logo_transparent.png') }}" alt="Logo"
+             width="65px" height="65px"/>
         <p class="pl-1 md:text-3xl">MacroHQ</p>
     </div>
     <!-- Button on the right -->
     <div class="space-x-1 flex items-center pr-1">
-        <img onclick="location.href = '/account';" class="invert" src="{{ url_for('static',filename='assets/account.svg') }}" alt="Account" width="48" height="48">
+        <img onclick="location.href = '/account';" class="invert"
+             src="{{ url_for('static',filename='assets/account.svg') }}" alt="Account" width="48" height="48">
     </div>
 </div>
 <!-- Main part -->
-<div class="">
-    <div class="text-3xl bg-neutral-900 m-2 rounded-2xl">
-        Welcome {{ username }}!
+<div class="bg-neutral-800 border-gray-500 border-[1px] m-2 rounded-xl">
+    <div class="p-1">
+        <p class="text-2xl">Welcome {{ username }}!</p>
+        <br>
+        <div class="grid grid-cols-1 md:grid-cols-2">
+            <div>
+                <div class="flex border-b-[1px] border-gray-500 w-fit">
+                    <img src="{{ url_for('static',filename='assets/discord.svg') }}" width="35" height="35"
+                         alt="Discord">
+                    <p class="pl-1 text-2xl">Discord</p>
+                </div>
+                <p id="discord-linking-status" class="text-xl text-red-600">❌ Not linked</p>
+                <button id="login-with-discord" class="flex bg-[#5865F2] rounded-xl px-1"
+                        onclick="location.href = 'https://discord.com/api/oauth2/authorize?client_id=1147160689878777989&redirect_uri=http%3A%2F%2F127.0.0.1%3A5439%2Faccount&response_type=code&scope=identify';">
+                    <img src="{{ url_for('static',filename='assets/discord_white.svg') }}" width="25" height="25"
+                         alt="Discord logo">
+                    <a class="pl-1">Login with Discord</a>
+                </button>
+                <div id="discord-profile" class="pt-1 hidden">
+                    <img id="discord-pfp" class="rounded-3xl"
+                         src="https://www.researchgate.net/publication/324055278/figure/fig6/AS:609004279574534@1522209343379/The-image-1-1-add-63-small-random-noise-vectors-generate-slightly-different-faces.png"
+                         height="40" width="40" alt="Profile picture">
+                    <p id="discord-username" class="text-2xl pl-1">Tom</p>
+                </div>
+            </div>
+            <div>
+                 <div class="flex border-b-[1px] border-gray-500 w-fit">
+                    <img src="{{ url_for('static',filename='assets/logo_transparent.png') }}" width="35" height="35"
+                         alt="MacroHQ">
+                    <p class="pl-1 text-2xl">Website</p>
+                </div>
+            </div>
+        </div>
     </div>
-    <button onclick="location.href = 'https://discord.com/api/oauth2/authorize?client_id=1147160689878777989&redirect_uri=http%3A%2F%2F127.0.0.1%3A5439%2Faccount&response_type=code&scope=identify';">
-        nig
-    </button>
 </div>
 </body>
 </html>

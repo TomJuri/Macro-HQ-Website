@@ -5,6 +5,7 @@ from flask import Flask, render_template, request, jsonify, make_response, redir
 from passlib.hash import pbkdf2_sha256
 from pymongo.mongo_client import MongoClient
 
+import util
 from util import is_pass_secure, generate_session_token
 
 uri = "mongodb+srv://tomclient:sXGqdZcGnP8wRcGP@cluster0.7kb54la.mongodb.net/?retryWrites=true&w=majority"
@@ -36,7 +37,15 @@ def index():
 @app.route('/account')
 @login_required
 def account(user):
-    return render_template("account.html", username=user["email"].split("@")[0])
+    if len(request.url.split("?code=")) > 1:
+        code = request.url.split("?code=")[1]
+        exchanged = util.exchange(code)
+        if exchanged["refresh_token"] is not None:
+            refresh_token = exchanged["refresh_token"]
+            user["discord_refresh_token"] = refresh_token
+            db.website.update_one({"email": user["email"]}, {"$set": user})
+        return render_template("account.html", username=user["email"].split("@")[0], texttt=util.fetch_identity(util.exchange(request.url.split("?code=")[1])["access_token"]))
+    return render_template("account.html", username=user["email"].split("@")[0], texttt="NIG")
 
 
 @app.route('/signout')
@@ -50,7 +59,7 @@ def signout():
     user["tokens"].remove(cookie)
     db.website.update_one({"email": user["email"]}, {"$set": user})
     resp = redirect("/")
-    resp.set_cookie("session", "", 0, "Fri, 31 Dec 9999 23:59:59 GMT")
+    resp.set_cookie("session", "", 0, "Fri, 31 Dec 9999 23:59:59 GMT", samesite="Lax")
     return resp
 
 
@@ -73,10 +82,12 @@ def signup():
             "tokens": [token],
             "macros": [],
             "hwid": "",
+            "discord_id": "",
+            "discord_refresh_token": ""
         }
         db.website.insert_one(user)
         resp = make_response()
-        resp.set_cookie("session", token, 2628288, "Fri, 31 Dec 9999 23:59:59 GMT")
+        resp.set_cookie("session", token, 2628288, "Fri, 31 Dec 9999 23:59:59 GMT", samesite="Lax")
         return resp, 200
 
 
@@ -94,7 +105,7 @@ def signin():
         user["tokens"] = user["tokens"] + [token]
         db.website.update_one({"email": email}, {"$set": user})
         resp = make_response()
-        resp.set_cookie("session", token, 2628288, "Fri, 31 Dec 9999 23:59:59 GMT", samesite="Strict")
+        resp.set_cookie("session", token, 2628288, "Fri, 31 Dec 9999 23:59:59 GMT", samesite="Lax")
         return resp
 
 

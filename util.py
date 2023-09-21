@@ -27,7 +27,7 @@ def exchange(code):
     response = requests.post("https://discord.com/api/v10/oauth2/token", data={
         "grant_type": "authorization_code", "code": code,
         "client_id": 1147160689878777989, "client_secret": "2aN7ZJOFbo4_qZ9BENxxRIPRlPt8dbOK",
-        "redirect_uri": "http://127.0.0.1:80/account"})
+        "redirect_uri": "http://127.0.0.1:5439/account"})
     return response.json()
 
 
