@@ -2,6 +2,7 @@ import random
 import re
 import string
 import requests
+from flask import request
 
 
 def generate_session_token(db):
@@ -27,7 +28,14 @@ def exchange(code):
     response = requests.post("https://discord.com/api/v10/oauth2/token", data={
         "grant_type": "authorization_code", "code": code,
         "client_id": 1147160689878777989, "client_secret": "2aN7ZJOFbo4_qZ9BENxxRIPRlPt8dbOK",
-        "redirect_uri": "http://127.0.0.1:5439/account"})
+        "redirect_uri": f"{request.root_url}account"})
+    return response.json()
+
+
+def get_access_token(refresh_token):
+    response = requests.post("https://discord.com/api/v10/oauth2/token", data={
+        "grant_type": "refresh_token", "refresh_token": refresh_token,
+        "client_id": 1147160689878777989, "client_secret": "2aN7ZJOFbo4_qZ9BENxxRIPRlPt8dbOK"})
     return response.json()
 
 

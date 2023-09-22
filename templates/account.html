@@ -34,6 +34,7 @@
                          alt="Discord">
                     <p class="pl-1 text-2xl">Discord</p>
                 </div>
+                <div class="hidden" id="isDiscordLinked">{{ isDiscordLinked }}</div>
                 <p id="discord-linking-status" class="text-xl text-red-600">❌ Not linked</p>
                 <button id="login-with-discord" class="flex bg-[#5865F2] rounded-xl px-1"
                         onclick="location.href = 'https://discord.com/api/oauth2/authorize?client_id=1147160689878777989&redirect_uri=http%3A%2F%2F127.0.0.1%3A5439%2Faccount&response_type=code&scope=identify';">
@@ -42,10 +43,10 @@
                     <a class="pl-1">Login with Discord</a>
                 </button>
                 <div id="discord-profile" class="pt-1 hidden">
-                    <img id="discord-pfp" class="rounded-3xl"
-                         src="https://www.researchgate.net/publication/324055278/figure/fig6/AS:609004279574534@1522209343379/The-image-1-1-add-63-small-random-noise-vectors-generate-slightly-different-faces.png"
+                    <img class="rounded-3xl"
+                         src="{{ discordProfilePicture }}"
                          height="40" width="40" alt="Profile picture">
-                    <p id="discord-username" class="text-2xl pl-1">Tom</p>
+                    <p class="text-2xl pl-1">{{ discordUsername }}</p>
                 </div>
             </div>
             <div>
@@ -58,5 +59,6 @@
         </div>
     </div>
 </div>
+<script src="{{ url_for('static',filename='js/scripts.js') }}"></script>
 </body>
 </html>

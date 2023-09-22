@@ -13,8 +13,7 @@ if (document.getElementById('signup-form') !== null) {
 }
 
 if(document.getElementById('discord-linking-status') !== null) {
-    const s = "{{ isDiscordLinked }}"
-    if(s === "true") {
+    if(document.getElementById("isDiscordLinked").innerHTML === "true") {
         const linkingStatus = document.getElementById('discord-linking-status')
         linkingStatus.classList.remove("text-red-600")
         linkingStatus.classList.add("text-green-500")
@@ -25,10 +24,6 @@ if(document.getElementById('discord-linking-status') !== null) {
         const discordProfile = document.getElementById('discord-profile')
         discordProfile.classList.remove("hidden")
         discordProfile.classList.add("flex")
-        const discordProfilePicture = document.getElementById('discord-pfp')
-        discordProfilePicture.src = "{{ discordProfilePicture }}"
-        const discordUsername = document.getElementById('discord-username')
-        discordUsername.innerHTML = "{{ discordUsername }}"
     }
 }
 
