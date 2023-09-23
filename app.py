@@ -5,7 +5,6 @@ from flask import Flask, render_template, request, redirect
 from pymongo.mongo_client import MongoClient
 
 import account_util
-import util
 
 uri = "mongodb+srv://tomclient:sXGqdZcGnP8wRcGP@cluster0.7kb54la.mongodb.net/?retryWrites=true&w=majority"
 client = MongoClient(uri)
@@ -40,11 +39,15 @@ def account(user):
         code = request.url.split("?code=")[1]
         if account_util.link_discord(db, code):
             discord_profile = account_util.get_discord_profile(db)
-            print(discord_profile)
             return render_template("account.html", username=user["email"].split("@")[0], isDiscordLinked="true",
                                    discordProfilePicture=discord_profile[1],
-                                   discordUsername=discord_profile[0])
-    return render_template("account.html", username=user["email"].split("@")[0], texttt="NIG")
+                                   discordUsername=discord_profile[0], redirectURI=request.root_url)
+    discord_profile = account_util.get_discord_profile(db)
+    if discord_profile is not None:
+        return render_template("account.html", username=user["email"].split("@")[0], isDiscordLinked="true",
+                               discordProfilePicture=discord_profile[1],
+                               discordUsername=discord_profile[0], redirectURI=request.root_url)
+    return render_template("account.html", username=user["email"].split("@")[0], redirectURI=request.root_url)
 
 
 @app.route('/signout')
@@ -52,9 +55,21 @@ def signout():
     return account_util.signout(db)
 
 
+@app.route('/signouteverywhere')
+def signout_everywhere():
+    return account_util.signout_everywhere(db)
+
+
+@app.route('/signoutofdiscord')
+def sign_out_of_discord():
+    return account_util.sign_out_of_discord(db)
+
+
 @app.route('/signup', methods=["GET", "POST"])
 def signup():
     if request.method == "GET":
+        if account_util.get_account(db):
+            return redirect("/")
         return render_template("signup.html")
     if request.method == "POST":
         return account_util.signup(db)
@@ -63,6 +78,8 @@ def signup():
 @app.route('/signin', methods=["GET", "POST"])
 def signin():
     if request.method == "GET":
+        if account_util.get_account(db):
+            return redirect("/")
         return render_template("signin.html")
     if request.method == "POST":
         return account_util.signin(db)

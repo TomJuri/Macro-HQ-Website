@@ -32,7 +32,7 @@ def exchange(code):
     return response.json()
 
 
-def get_access_token(refresh_token):
+def refresh(refresh_token):
     response = requests.post("https://discord.com/api/v10/oauth2/token", data={
         "grant_type": "refresh_token", "refresh_token": refresh_token,
         "client_id": 1147160689878777989, "client_secret": "2aN7ZJOFbo4_qZ9BENxxRIPRlPt8dbOK"})

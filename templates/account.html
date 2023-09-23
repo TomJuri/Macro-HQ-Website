@@ -35,26 +35,35 @@
                     <p class="pl-1 text-2xl">Discord</p>
                 </div>
                 <div class="hidden" id="isDiscordLinked">{{ isDiscordLinked }}</div>
-                <p id="discord-linking-status" class="text-xl text-red-600">❌ Not linked</p>
-                <button id="login-with-discord" class="flex bg-[#5865F2] rounded-xl px-1"
-                        onclick="location.href = 'https://discord.com/api/oauth2/authorize?client_id=1147160689878777989&redirect_uri=http%3A%2F%2F127.0.0.1%3A5439%2Faccount&response_type=code&scope=identify';">
+                <button id="login-with-discord" class="flex bg-[#5865F2] rounded-xl mt-1 px-1"
+                        onclick="location.href = 'https://discord.com/api/oauth2/authorize?client_id=1147160689878777989&redirect_uri={{ redirectURI }}account&response_type=code&scope=identify';">
                     <img src="{{ url_for('static',filename='assets/discord_white.svg') }}" width="25" height="25"
                          alt="Discord logo">
-                    <a class="pl-1">Login with Discord</a>
+                    <a class="pl-1">Signin with Discord</a>
                 </button>
                 <div id="discord-profile" class="pt-1 hidden">
                     <img class="rounded-3xl"
                          src="{{ discordProfilePicture }}"
-                         height="40" width="40" alt="Profile picture">
+                    height="40" width="40" alt="Profile picture">
                     <p class="text-2xl pl-1">{{ discordUsername }}</p>
                 </div>
+                <button id="signout-of-discord" class="hidden bg-[#5865F2] rounded-xl mt-1 px-2"
+                        onclick="location.href = '/signoutofdiscord';">Sign out
+                </button>
             </div>
-            <div>
-                 <div class="flex border-b-[1px] border-gray-500 w-fit">
+            <div class="pt-4 md:pt-0">
+                <div class="flex border-b-[1px] border-gray-500 w-fit">
                     <img src="{{ url_for('static',filename='assets/logo_transparent.png') }}" width="35" height="35"
                          alt="MacroHQ">
                     <p class="pl-1 text-2xl">Website</p>
                 </div>
+                <button class="mt-1 px-2 bg-yellow-500 rounded-2xl" onclick="location.href = '/signout';">
+                    Sign out
+                </button>
+                <br>
+                <button class="mt-1 px-2 bg-yellow-500 rounded-2xl" onclick="location.href = '/signouteverywhere';">
+                    Sign out everywhere
+                </button>
             </div>
         </div>
     </div>

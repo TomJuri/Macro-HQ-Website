@@ -12,18 +12,17 @@ if (document.getElementById('signup-form') !== null) {
     });
 }
 
-if(document.getElementById('discord-linking-status') !== null) {
+if(document.getElementById("isDiscordLinked") !== null) {
     if(document.getElementById("isDiscordLinked").innerHTML === "true") {
-        const linkingStatus = document.getElementById('discord-linking-status')
-        linkingStatus.classList.remove("text-red-600")
-        linkingStatus.classList.add("text-green-500")
-        linkingStatus.innerHTML = "✅ Linked"
         const loginWithDiscord = document.getElementById('login-with-discord')
         loginWithDiscord.classList.remove("flex")
         loginWithDiscord.classList.add("hidden")
         const discordProfile = document.getElementById('discord-profile')
         discordProfile.classList.remove("hidden")
         discordProfile.classList.add("flex")
+        const signOutOfDiscord = document.getElementById('signout-of-discord')
+        signOutOfDiscord.classList.remove("hidden")
+        signOutOfDiscord.classList.add("flex")
     }
 }
 
