@@ -10,7 +10,7 @@ uri = "mongodb+srv://tomclient:sXGqdZcGnP8wRcGP@cluster0.7kb54la.mongodb.net/?re
 client = MongoClient(uri)
 db = client["tomclient"]
 
-os.system("npx tailwindcss -i static/css/input.css -o static/css/style.css --minify")
+os.system("npx tailwindcss -i static/css/input.css -o static/css/style.css")
 app = Flask(__name__)
 
 
