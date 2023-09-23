@@ -65,6 +65,11 @@ def sign_out_of_discord():
     return account_util.sign_out_of_discord(db)
 
 
+@app.route('/macrohub')
+def macrohub():
+    return render_template("macrohub.html")
+
+
 @app.route('/signup', methods=["GET", "POST"])
 def signup():
     if request.method == "GET":
