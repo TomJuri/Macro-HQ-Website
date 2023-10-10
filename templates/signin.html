@@ -1,13 +1,10 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet">
-    <title>Sign in</title>
-    <link href="{{ url_for('static',filename='assets/logo_transparent.png') }}" rel="icon" type="image/x-icon">
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %} Sign in {% endblock %}
+
+{% block header %} {% endblock %}
+
+{% block content %}
 <div class="bg-neutral-900 flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen lg:py-0">
     <a class="flex items-center mb-6 text-2xl font-semibold text-white" href="#">
         <img alt="logo" class="w-14 h-14 mr-2" src="{{ url_for('static',filename='assets/logo_transparent.png') }}">
@@ -52,5 +49,4 @@
     </div>
 </div>
 <script src="{{ url_for('static',filename='js/scripts.js') }}"></script>
-</body>
-</html>
+{% endblock %}

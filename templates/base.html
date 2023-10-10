@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %} {% endblock %}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="MacroHQ" property="og:title">
+    <meta content="We make high quality macros" property="og:description">
+    <meta content="https://macrohq.dev" property="og:url">
+    <meta content="https://macrohq.dev{{ url_for('static',filename='assets/banner.png') }}" property="og:image">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta content="#f8cc1e" data-react-helmet="true" name="theme-color">
+    <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static',filename='assets/logo_transparent.png') }}">
+</head>
+<body>
+
+{% block particles %} {% endblock %}
+
+{% block header %}
+    <div class="bg-neutral-900 flex justify-between">
+    <div class="space-x-1 flex items-center p-1">
+        <img class="rounded-3xl" src="{{ url_for('static',filename='assets/logo_transparent.png') }}" alt="Logo"
+             width="65px" height="65px"/>
+        <p class="pl-1 md:text-3xl">MacroHQ</p>
+    </div>
+    <div class="space-x-1 flex items-center pr-2">
+        <img onclick="location.href = '/account';" class="invert"
+             src="{{ url_for('static',filename='assets/account.svg') }}" alt="Account" width="48" height="48">
+    </div>
+    </div>
+{% endblock %}
+
+{% block content %} {% endblock %}
+
+</body>
+</html>

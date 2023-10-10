@@ -1,41 +1,24 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="MacroHQ" property="og:title">
-    <meta content="We make high quality macros" property="og:description">
-    <meta content="https://macrohq.dev" property="og:url">
-    <meta content="https://macrohq.dev{{ url_for('static',filename='assets/banner.png') }}" property="og:image">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta content="#f8cc1e" data-react-helmet="true" name="theme-color">
-    <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet">
-    <title>MacroHQ</title>
-    <link rel="icon" type="image/x-icon" href="{{ url_for('static',filename='assets/logo_transparent.png') }}">
+{% extends 'base.html' %}
+
+{% block title %} MacroHQ {% endblock %}
+
+{% block particles %}
+<div class="absolute -z-10 bg-black h-screen w-screen" id="particles-js"></div>
+{% endblock %}
+
+{% block content %}
+    <div class="absolute top-1/4 md:top-1/2 left-1/2 text-center transform -translate-x-1/2 -translate-y-1/2">
+        <p class="text-7xl">MacroHQ</p>
+        <p class="text-2xl">We make macros.</p>
+        <div class="pt-2">
+            <button onclick="location.href = '/macrohub';"
+                    class="border-white text-xl border-2 rounded-xl hover:bg-white hover:text-black pl-2 pr-2">MacroHub
+            </button>
+            <button onclick="location.href = 'https://discord.gg/vBP8R6JK8Z';"
+                    class="border-white text-xl border-2 rounded-xl hover:bg-white hover:text-black pl-2 pr-2">Discord
+            </button>
+        </div>
+    </div>
     <script src="{{ url_for('static',filename='js/particles.min.js') }}"></script>
     <script src="{{ url_for('static',filename='js/app.js') }}"></script>
-</head>
-<body>
-<div class="absolute -z-10 bg-black h-screen w-screen" id="particles-js"></div>
-<div class="bg-neutral-900 flex justify-between">
-    <!-- Logo on the left -->
-    <div class="space-x-1 flex items-center p-1">
-        <img class="rounded-3xl" src="{{ url_for('static',filename='assets/logo_transparent.png') }}" alt="Logo" width="65px" height="65px"/>
-        <p class="pl-1 md:text-3xl">MacroHQ</p>
-    </div>
-    <!-- Button on the right -->
-    <div class="space-x-1 flex items-center pr-2">
-        <img onclick="location.href = '/account';" class="invert" src="{{ url_for('static',filename='assets/account.svg') }}" alt="Account" width="48" height="48">
-    </div>
-</div>
-<!-- Main part -->
-<div class="absolute top-1/4 md:top-1/2 left-1/2 text-center transform -translate-x-1/2 -translate-y-1/2">
-    <p class="text-7xl">MacroHQ</p>
-    <p class="text-2xl">We make macros.</p>
-    <div class="pt-2">
-        <button onclick="location.href = '/macrohub';" class="border-white text-xl border-2 rounded-xl hover:bg-white hover:text-black pl-2 pr-2">MacroHub</button>
-        <button onclick="location.href = 'https://discord.gg/vBP8R6JK8Z';" class="border-white text-xl border-2 rounded-xl hover:bg-white hover:text-black pl-2 pr-2">Discord</button>
-    </div>
-</div>
-</body>
-</html>
+{% endblock %}

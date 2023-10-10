@@ -1,24 +1,8 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet">
-    <title>MacroHub</title>
-    <link rel="icon" type="image/x-icon" href="{{ url_for('static',filename='assets/logo_transparent.png') }}">
-</head>
-<body>
-<div class="bg-neutral-900 flex justify-between">
-    <!-- Logo on the left -->
-    <div class="space-x-1 flex items-center p-1">
-        <img class="rounded-3xl" src="{{ url_for('static',filename='assets/logo_transparent.png') }}" alt="Logo" width="65px" height="65px"/>
-        <p class="pl-1 md:text-3xl">MacroHQ</p>
-    </div>
-    <!-- Button on the right -->
-    <div class="space-x-1 flex items-center pr-2">
-        <img onclick="location.href = '/account';" class="invert" src="{{ url_for('static',filename='assets/account.svg') }}" alt="Account" width="48" height="48">
-    </div>
-</div>
+{% extends 'base.html' %}
+
+{% block title %} MacroHub {% endblock %}
+
+{% block content %}
 <div class="bg-neutral-800 h-screen w-screen">
     <div class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4">
         <div class="bg-neutral-600 hover:scale-105 transform transition-transform border-2 border-neutral-500 rounded-2xl mx-2 mt-2">
@@ -45,5 +29,4 @@
         </div>
     </div>
 </div>
-</body>
-</html>
+{% endblock %}
